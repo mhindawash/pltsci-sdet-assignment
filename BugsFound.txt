@@ -1,0 +1,38 @@
+Bug 1: Caching Bug - Incorrect Persistence of Dirt Patches
+
+Description:
+The current implementation of the robotic hoover service exhibits a "caching" bug where patches of dirt are incorrectly persisted from previous runs.  The service has state that persists across subsequent runs, but the API implies that the service should be stateless where output is only computed from the given input, independent of previous inputs.  But it's in current implementation, subsequent runs and tests may clean imaginary patches persisted from previous runs. This also makes the testing flaky because the tests cannot be run independently of each other without completely restarting the service every time.
+
+Environment:
+ - Cypressed controlled Chrome
+
+Expected Results:
+The robotic hoover service should function as a stateless system, where the output is solely determined by the provided input and independent of previous runs. In each test run, the service should only clean the specified patches of dirt and accurately reflect the final hoover position and the number of cleaned patches.
+
+Actual Results:
+Due to the caching bug, subsequent runs and tests may encounter and clean imaginary patches of dirt persisted from previous runs. This behavior leads to inaccurate results and prevents the tests from being run independently without restarting the service.
+
+Steps to Reproduce:
+1. Start the robotic hoover service.
+2. Run a test that cleans a specific set of patches of dirt.
+3. Run another test that does not contain any patches of dirt.
+4. Observe that the second test incorrectly detects and cleans patches of dirt from the previous run.
+
+Bug 2: Invalid Input Handling - Inconsistent Error Responses for Invalid Coordinates or Patches
+
+Description:
+The robotic hoover service does not consistently handle invalid input for coordinates or patches of dirt. When an invalid value is provided for the coordinates or patches, the service still returns a successful 200 status code instead of returning an appropriate error response. This makes it difficult to identify and diagnose input validation issues.
+
+Environment:
+- Cypress controlled Chrome
+
+Expected Results:
+When invalid input is provided for the coordinates or patches of dirt, the service should return an error response with an appropriate status code (e.g., 400 Bad Request) and an informative error message.
+
+Actual Results:
+The service returns a successful 200 status code even when invalid input is provided for the coordinates or patches of dirt, making it challenging to identify and handle input validation issues effectively.
+
+Steps to Reproduce:
+1. Submit a request with invalid coordinates or patches of dirt.
+2. Check the response status code and content.
+3. Notice that the service returns a 200 status code instead of an error response.
