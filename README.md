@@ -58,12 +58,12 @@ Test Suite Details
 **Technology Stack**
 - Cypress: A JavaScript-based end-to-end testing framework.
 
-**Test Structure**
+### **Test Structure** 
 The test suite is implemented using Cypress, a widely-used end-to-end testing framework. The test cases are organized based on different scenarios, including valid inputs, invalid inputs, and edge cases. Each test case verifies the expected behavior of the service by comparing the actual results with the expected results.
 
 The tests are written in a behavior-driven development (BDD) style, using descriptive test titles and assertions to clearly define the expected behavior and outcomes.
 
-**Reasoning for Using Cypress**
+### **Reasoning for Using Cypress** 
 Cypress was chosen for this test suite due to its simplicity, ease of use, and powerful features for testing web applications. It provides a clean and expressive syntax for writing tests, as well as excellent debugging and built-in time-travel capabilities.
 
 Cypress also offers robust support for making HTTP requests and handling RESTful APIs, which is crucial for testing the service endpoints in this assignment.
