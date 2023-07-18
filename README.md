@@ -10,6 +10,7 @@ Setup Instructions
 - Docker v18+ must be installed on your machine.
 
 **Building the Service**
+
 To build the service, follow these steps:
 1. Open a terminal or command prompt.
 2. Navigate to the root of this repository.
@@ -19,6 +20,7 @@ To build the service, follow these steps:
 - `docker build -t pltsci-sdet-assignment service`
 
 **Running the Service**
+
 To run the service, execute the following command:
 
 - `docker run -d -p 8080:8080 --name pltsci-sdet-assignment pltsci-sdet-assignment`
